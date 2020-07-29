@@ -5,9 +5,8 @@
 # @File   : ip_request.py
 
 import logging
-import time
 import requests
-from flask import Blueprint
+from flask import Blueprint, abort, jsonify
 
 def get_logger():
     """
@@ -26,16 +25,26 @@ logger = get_logger()
 
 ip_request_blueprint = Blueprint('ip_request_blueprint', __name__)
 
-@ip_request_blueprint.route('/')
+@ip_request_blueprint.errorhandler(429)
+def too_many_requests(e):
+    return jsonify(error=str(e)), 429
+
+@ip_request_blueprint.errorhandler(404)
+def not_found(e):
+    return jsonify(error=str(e)), 404
+
+@ip_request_blueprint.route('/', methods=['GET'])
 def get_ip():
-    url_get_ip = 'http://webapi.http.zhimacangku.com/getip?num=1&type=2&pro=&city=0&yys=0&port=1&time=1&ts=1&ys=1&cs=1&lb=1&sb=0&pb=45&mr=1&regions='
+    url_get_ip = 'http://webap\i.http.zhimacangku.com/getip?num=1&type=2&pro=&city=0&yys=0&port=1&time=1&ts=1&ys=1&cs=1&lb=1&sb=0&pb=45&mr=1&regions='
     try:
         r = requests.get(url=url_get_ip)
-        if r.json()['code'] == 111:
-            logger.info(r.json()['msg'])
     except:
-        time.sleep(2)
-        r = requests.get(url=url_get_ip)
-    logger.info("成功！")
+        logger.error("失败！")
+        abort(404, description='Not Found')
 
-    return r.text
+    if r.json()['code'] == 111:
+        logger.error(r.json()['msg'])
+        abort(429, description="Too Many Requests")
+    else:
+        logger.info("成功！")
+        return r.json()

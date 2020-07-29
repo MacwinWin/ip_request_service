@@ -8,6 +8,7 @@ from flask import Flask
 from ip_request import ip_request
 
 app = Flask(__name__)
+app.config['JSON_AS_ASCII'] = False
 app.register_blueprint(ip_request.ip_request_blueprint, url_prefix='/newip')
 
 if __name__ == '__main__':

@@ -1,0 +1,14 @@
+version: "3.8"
+services: 
+    ip_request_1.0:
+        image: ip_request_service:1.0
+        container_name: ip_request_service_1.0
+        build: .
+        ports: 
+            - 8000:8000
+        volumes:
+            - ip_request_service:/vol
+        restart: always
+
+volumes: 
+    ip_request_service:

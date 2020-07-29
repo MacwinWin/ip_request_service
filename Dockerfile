@@ -10,9 +10,9 @@ WORKDIR /app
 
 # 安装基础环境
 RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf \
-#    && sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
-    && mv /etc/apt/sources.list /etc/apt/sources.list.bak \
-    && cp /app/sources.list /etc/apt/sources.list \
+    && sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
+#    && mv /etc/apt/sources.list /etc/apt/sources.list.bak \
+#    && cp /app/sources.list /etc/apt/sources.list \
     && apt-get clean \
     && apt-get update \
     # 设置python pip
