@@ -19,7 +19,7 @@ Flask\uWSGI\Nginx\Docker
 ├── supervisord.conf
 └── uWSGI.ini
 
-2 directories, 11 files
+1 directories, 10 files
 
 ## Installation
 **Start with Docker**
@@ -32,7 +32,7 @@ docker-compose up
 
 ## API doc
 
-**URL** : `/newip`
+**URL** : `127.0.0.1:8000/newip`
 
 **Method** : `GET`
 
