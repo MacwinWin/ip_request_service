@@ -3,7 +3,15 @@ Web service to request zhima high anonymous ip address
 Returns json data about a zhima ip.
 
 ## Project Structure
-Flask\uWSGI\Nginx\Docker
+
+[![Documentation](https://img.shields.io/badge/Flask-1.1.0%2B-lightgrey.svg)](https://flask.palletsprojects.com/)
+
+[![Documentation](https://img.shields.io/badge/uWSGI-2.0%2B-green.svg)](https://uwsgi-docs.readthedocs.io/en/latest/)
+
+[![Documentation](https://img.shields.io/badge/NGINX-1.19.1%2B-brightgreen.svg)](https://nginx.org/en/docs/)
+
+[![Documentation](https://img.shields.io/badge/Docker-19.03.12%2B-Blue.svg)](https://docs.docker.com/)
+
 
 ## File Structure
 ```
