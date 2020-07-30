@@ -35,7 +35,7 @@ def not_found(e):
 
 @ip_request_blueprint.route('/', methods=['GET'])
 def get_ip():
-    url_get_ip = 'http://webap\i.http.zhimacangku.com/getip?num=1&type=2&pro=&city=0&yys=0&port=1&time=1&ts=1&ys=1&cs=1&lb=1&sb=0&pb=45&mr=1&regions='
+    url_get_ip = 'http://webapi.http.zhimacangku.com/getip?num=1&type=2&pro=&city=0&yys=0&port=1&time=1&ts=1&ys=1&cs=1&lb=1&sb=0&pb=45&mr=1&regions='
     try:
         r = requests.get(url=url_get_ip)
     except:
